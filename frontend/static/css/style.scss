@@ -1,0 +1,194 @@
+// Define color variables
+$color-primary-dark: #d34ed3;
+$color-secondary-dark: #8c208c;
+$color-tertiary-dark: #540d54;
+$color-quaternary-dark: #000;
+$color-link-text: #b8b7b7;
+$color-dropdown-background: #f9f9f9;
+$color-dropdown-text: black;
+$color-link-hover-background: #555;
+$color-link-hover-text: white;
+$color-button-background: #5D3FD3;
+$color-button-hover-background: #291186;
+
+// General Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app #mainComponent {
+  height: 100%;
+  animation: gradientAnimation 15s ease infinite;
+  background: linear-gradient(45deg, $color-primary-dark, $color-secondary-dark, $color-tertiary-dark, $color-quaternary-dark);
+  background-size: 400% 400%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden; // Prevents horizontal scrollbar
+}
+
+// Keyframes for background animation
+@keyframes gradientAnimation {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// Nesting styles
+html body #app #mainComponent {
+  .topPage {
+    margin-top: 40px;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "logo header" "title title";
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      grid-area: header;
+    }
+
+    #navbar {
+      list-style-type: none;
+      color: rgba(255, 255, 255, 0);
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        float: left;
+
+        a {
+          display: block;
+          color: $color-link-text;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+
+          &:hover {
+            background-color: $color-link-hover-background;
+            color: $color-link-hover-text;
+          }
+        }
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        background-color: $color-dropdown-background;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        li a {
+          color: $color-dropdown-text;
+          padding: 12px 16px;
+          display: block;
+          text-align: left;
+        }
+      }
+
+      #competitions:hover .dropdown, #about:hover .dropdown {
+        display: block;
+      }
+
+      #ticketsButton button {
+        background-color: $color-button-background;
+        color: white;
+        padding: 20px 32px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: $color-button-hover-background;
+        }
+      }
+    }
+    
+    h1 {
+      grid-area: title;
+      width: 100%;
+      text-align: center;
+      font-size: 5rem;
+      font-weight: bold;
+      font-family: Georgia;
+      margin: 0;
+    }
+  }
+
+    #box {
+        width: 80%;
+        height: 200vh;
+        background-color: rgba(255, 255, 255, 0.922);
+        margin: 30px auto 0; // Centers the box and applies top margin
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: center;
+
+        #topBox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            #louresImg {
+                margin: 50px;
+                height: 500px;
+                width: auto; // Adjusts to content width while maintaining aspect ratio
+                grid-area: louresImg;
+                }
+
+            #info {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 50px;
+                font-size: x-large;
+                font-weight: bold;
+        
+                p {
+                    text-align: center;
+                    margin: 0; // Ensures there's no default margin on <p>
+                }
+            }
+    
+        }
+
+    
+        #hr {
+        border: 5px solid rgb(0, 0, 0);
+        border-radius: 5px;
+        width: 80%;
+        align-self: center; // Centers the line in its grid area
+        grid-area: breakLine;
+        }
+    
+        #sponsorWrap {
+        display: flex; //probably put a grid on this 
+        justify-content: center; // Centers sponsor images horizontally
+        flex-wrap: wrap; // Allows sponsor images to wrap if needed
+        gap: 20px; // Adds some space between images
+        padding: 20px 0; // Adds padding above and below the sponsor images
+    
+        img{
+            height: 300px; // Example height for sponsor images
+            width: auto; // Maintains aspect ratio
+        }
+        }
+      }
+    }
